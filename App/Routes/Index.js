@@ -1,12 +1,15 @@
 const express = require('express')
 const api = express.Router()
+const pass = require('../middlewares/auth')
+const user = require('../controllers/user')
 
-const recipeController = require('../controller/Recipe');
-const ingredientController = require('../controller/Ingredient.js');
+api.post('/auth/login', user.logIn)
+api.post('/auth/signup', user.signUp)
 
 
+const recipeController = require('../controllers/Recipe');
+const ingredientController = require('../controllers/Ingredient.js');
 
-//#########   RECIPES ROUTINGS   ##########//
 
 // Create a new recipe
 api.post('/recipe_new', recipeController.create);
@@ -31,8 +34,6 @@ api.get('/ingredient_all', ingredientController.findAll);
 api.put('/ingredient_update/:ingredientId', ingredientController.update);
 //delete a ingredient
 api.delete('/ingredient_delete/:ingredientId', ingredientController.deleteOne);
-
-
 
 
 module.exports = {
