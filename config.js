@@ -14,7 +14,7 @@ var config = {
     },
     production: {
         host: process.env.HOST,
-        port: process.env.PORT,
+        port: process.env.POR,
         db: process.env.MONGODB_URI,
         bcrypt: {
             salt: 10
